@@ -8,16 +8,20 @@
   --screen-w: 330px; --screen-h: 257px; --wheel-size: 280px;
   color-scheme: light;
 }
-body.black {
+html.black {
   --case-top: #292929; --case-bottom: #0d0d0d;
   --wheel-top: #333; --wheel-bottom: #212121; --wheel-stroke: #0d0d0d; --wheel-label: #d1d1d1;
   --center-top: #121212; --center-bottom: #242424;
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; overflow: hidden; overscroll-behavior: none; }
+html { height: 100%; }
+html, body { margin: 0; overflow: hidden; overscroll-behavior: none; }
+/* iOS leaves the strip under the home indicator to <html>; paint it the casing color too. */
+html { background: var(--case-bottom); }
 body {
-  position: fixed; inset: 0;
+  /* A Home Screen app can stop "inset: 0" short of the bottom edge; the large viewport reaches it. */
+  position: fixed; top: 0; left: 0; right: 0; height: 100vh; height: 100lvh;
   background: linear-gradient(var(--case-top), var(--case-bottom));
   font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-user-select: none; user-select: none;
@@ -116,7 +120,7 @@ body {
   border: 1px solid var(--wheel-stroke); box-shadow: 0 1px 2px rgba(0, 0, 0, .08);
   touch-action: none; outline: none;
 }
-body.black .wheel { box-shadow: 0 1px 2px rgba(0, 0, 0, .4); }
+html.black .wheel { box-shadow: 0 1px 2px rgba(0, 0, 0, .4); }
 .wheel:focus-visible { box-shadow: 0 0 0 3px var(--select-bottom); }
 .wheel .label { position: absolute; color: var(--wheel-label); fill: var(--wheel-label); pointer-events: none; }
 .wheel .menu { top: 10%; left: 0; right: 0; text-align: center; font-weight: 700; font-size: calc(var(--wheel-size) * .058); letter-spacing: .02em; }

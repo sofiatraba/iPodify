@@ -752,7 +752,7 @@ function render() {
 }
 
 function draw() {
-  document.body.className = ipod.theme;
+  document.documentElement.className = ipod.theme;
   const screen = ipod.current.screen;
   $('title').textContent = ipod.title(screen);
   $('state').innerHTML = player.isPlaying ? '<path d="M1 0v10l8-5z"/>' : '<path d="M1 0h3v10H1zM6 0h3v10H6z"/>';
@@ -850,7 +850,7 @@ function layout() {
   const gutter = 22;
   const w = Math.min(window.innerWidth, 500) - gutter * 2;
   const style = getComputedStyle($('ipod'));
-  const usable = window.innerHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+  const usable = $('ipod').clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
   const screenH = Math.min(w * 0.78, usable * 0.45);
   const wheel = Math.min(w * 0.86, usable - screenH - 32);
   const root = document.documentElement.style;
