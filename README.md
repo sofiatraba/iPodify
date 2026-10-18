@@ -4,9 +4,9 @@ An iPod classic for your iPhone. It only holds the music you put on it: Spotify 
 
 ## Web version (no Xcode needed)
 
-https://sofiatraba.github.io/iPodify/ is the same iPod as a web app, served from `docs/` by GitHub Pages.
+The same iPod also runs as a web app from `docs/`, served by GitHub Pages at `https://<your-username>.github.io/<repo-name>/`.
 
-1. In the Spotify dashboard, open the app's **Settings › Redirect URIs**, add `https://sofiatraba.github.io/iPodify/` and save.
+1. In the Spotify dashboard, open the app's **Settings › Redirect URIs**, add your GitHub Pages address exactly as Safari shows it, ending in `/`, and save.
 2. On the iPhone, open the link in **Safari**, tap **Share › Add to Home Screen**.
 3. Open the iPod from the Home Screen icon and sign in there. The Home Screen app keeps its own sign-in, separate from Safari.
 
@@ -37,10 +37,10 @@ Music plays through the Spotify app. The iPod is its remote, with a click wheel.
 1. Go to https://developer.spotify.com/dashboard and log in. You need Premium.
 2. Click **Create app**:
    - Name: `iPod`. Description: anything.
-   - Redirect URIs: `ipodify://callback` for the native app, and your web address (for example `https://sofiatraba.github.io/iPodify/`) for the web version. Click **Add** after each.
+   - Redirect URIs: `ipodify://callback` for the native app, and your GitHub Pages address for the web version. Click **Add** after each.
    - APIs used: tick **Web API** only.
 3. Save, open **Settings**, and copy the **Client ID**.
-4. Put it in `iPodify/Config.swift` (`spotifyClientID`) and `docs/ipod.js` (`CLIENT_ID`). If you host the web version somewhere else, change `SITE_URI` in `docs/ipod.js` too.
+4. Put it in `iPodify/Config.swift` (`spotifyClientID`) and `docs/ipod.js` (`CLIENT_ID`).
 
 Development-mode Spotify apps work for the owner plus up to 5 users you add under **User Management**.
 

@@ -199,7 +199,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sofiatraba.ipodify;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.ipodify;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -282,7 +282,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sofiatraba.ipodify;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.ipodify;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

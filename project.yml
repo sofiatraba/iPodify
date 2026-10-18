@@ -1,6 +1,6 @@
 name: iPodify
 options:
-  bundleIdPrefix: com.sofiatraba
+  bundleIdPrefix: com.example
   deploymentTarget:
     iOS: "17.0"
 settings:
@@ -15,7 +15,7 @@ targets:
     sources: [iPodify]
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.sofiatraba.ipodify
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.ipodify
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 767229WVUT
         TARGETED_DEVICE_FAMILY: "1"

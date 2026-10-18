@@ -6,12 +6,8 @@
 
 /** Not a secret: sign-in uses PKCE, so there is no client secret. */
 const CLIENT_ID = '7dda45f9fbf3427ab6efd06d1c9d590d';
-/**
- * Must be listed exactly like this under "Redirect URIs" in the Spotify dashboard. Pinned on GitHub Pages,
- * so opening the page as /ipodify, /iPodify or /iPodify/index.html still sends the one registered address.
- */
-const SITE_URI = 'https://sofiatraba.github.io/iPodify/';
-const REDIRECT_URI = location.hostname.endsWith('github.io') ? SITE_URI : new URL('./', location.href).href;
+/** This page's folder. Must be listed exactly like this under "Redirect URIs" in the Spotify dashboard. */
+const REDIRECT_URI = new URL('./', location.href).href;
 const SCOPES = [
   'playlist-read-private',
   'playlist-read-collaborative',

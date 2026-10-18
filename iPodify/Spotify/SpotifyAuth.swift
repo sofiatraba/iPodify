@@ -164,7 +164,7 @@ extension SpotifyAuth: ASWebAuthenticationPresentationContextProviding {
 }
 
 private enum Keychain {
-    static let service = "com.sofiatraba.ipodify.spotify"
+    static let service = "ipodify.spotify"
 
     static func save(_ tokens: SpotifyAuth.Tokens?) {
         let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
