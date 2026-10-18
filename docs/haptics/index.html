@@ -91,6 +91,7 @@
   .row button { flex: 1 1 140px; }
   button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
   .note { color: var(--muted); font-size: 13px; line-height: 1.45; margin: 0; }
+  .real-switch { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; font-size: 15px; }
   .hidden-switch { position: fixed; left: -9999px; top: 0; opacity: 0; pointer-events: none; }
 </style>
 </head>
@@ -109,6 +110,7 @@
       <span class="k">Steps turned</span><span class="v" id="steps">0</span>
       <span class="k">Center presses</span><span class="v" id="presses">0</span>
       <span class="k">Steps per turn</span><span class="v" id="spt">20</span>
+      <span class="k">iOS version</span><span class="v" id="ios">?</span>
     </div>
   </section>
 
@@ -125,6 +127,8 @@
       <button id="sound" type="button" aria-pressed="false">Click sound: off</button>
       <button id="density" type="button">Steps per turn: 20</button>
     </div>
+    <label class="real-switch">Flip this switch with your finger <input type="checkbox" switch></label>
+    <p class="note">The switch above is Safari's own. If flipping it by hand taps your finger but the wheel doesn't, iOS is blocking the trick. If it doesn't tap either, haptics are off on the phone.</p>
     <p class="note">What to check: does "Tap for one tick" buzz? Does turning slowly tick every step? Does a fast spin still tick, or go quiet? Does it feel like a click wheel?</p>
   </div>
 
@@ -157,6 +161,9 @@
     else if (navigator.vibrate) navigator.vibrate(8);
     clickSound();
   }
+
+  const iosMatch = navigator.userAgent.match(/OS (\d+)_(\d+)/);
+  $('ios').textContent = iosMatch ? iosMatch[1] + '.' + iosMatch[2] : 'not iOS';
 
   let steps = 0, presses = 0, perTurn = 20;
   const wheel = $('wheel'), center = $('center');
