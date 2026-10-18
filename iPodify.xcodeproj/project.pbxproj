@@ -1,0 +1,383 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1086F762762D124440085119 /* SystemVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9F35A4863E5B1E90DC2D87 /* SystemVolume.swift */; };
+		361B7F3E1F353FECC436BC50 /* IPod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67435BDED4955424014073FC /* IPod.swift */; };
+		4AAB053AD05DA8B5EF111E08 /* NowPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D7F027733DE47D1F81E228 /* NowPlayingView.swift */; };
+		514DA371398DCEA2E4B05884 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE791E5A908ADE915685BDC9 /* Player.swift */; };
+		5CE2A0C5FBB37158231329AC /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF19E2F059C23AE19552DBA /* Library.swift */; };
+		764B2260F2C18F177E745FBB /* iPodifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A648BDCC721807FAE97876 /* iPodifyApp.swift */; };
+		AB25A687BAC109EA4088E6DE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3C6C5327931280FB70735 /* Config.swift */; };
+		B2FA51D3F58F5D8777C92BD4 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E06C31C8EBCEC8694E00EB9 /* ScreenView.swift */; };
+		BA1E3B003C0DE86562AB18EE /* IPodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F541BCF00F293C6B4269F6 /* IPodView.swift */; };
+		BB162E2BA74CAC9A1E978ABE /* ClickWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19360351F511D21DE46CEF26 /* ClickWheel.swift */; };
+		BE523485BCBB605AF1DBA2FB /* SpotifyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0DEAAA91F0C43315FC82C7 /* SpotifyAPI.swift */; };
+		F427141654825F03E949FF25 /* SpotifyAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530C17DBA8B297B813D777A3 /* SpotifyAuth.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0C9F35A4863E5B1E90DC2D87 /* SystemVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemVolume.swift; sourceTree = "<group>"; };
+		0FA747752AA2A2AD2FE2A38A /* iPodify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPodify.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19360351F511D21DE46CEF26 /* ClickWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickWheel.swift; sourceTree = "<group>"; };
+		2EF19E2F059C23AE19552DBA /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
+		49F541BCF00F293C6B4269F6 /* IPodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPodView.swift; sourceTree = "<group>"; };
+		4C0DEAAA91F0C43315FC82C7 /* SpotifyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPI.swift; sourceTree = "<group>"; };
+		530C17DBA8B297B813D777A3 /* SpotifyAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAuth.swift; sourceTree = "<group>"; };
+		67435BDED4955424014073FC /* IPod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPod.swift; sourceTree = "<group>"; };
+		74A648BDCC721807FAE97876 /* iPodifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPodifyApp.swift; sourceTree = "<group>"; };
+		7E06C31C8EBCEC8694E00EB9 /* ScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenView.swift; sourceTree = "<group>"; };
+		84943ACE8B478DBD4D697E72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9CC3C6C5327931280FB70735 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		A4D7F027733DE47D1F81E228 /* NowPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingView.swift; sourceTree = "<group>"; };
+		EE791E5A908ADE915685BDC9 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		038C7C23C237F67972ED7C0D /* iPodify */ = {
+			isa = PBXGroup;
+			children = (
+				9CC3C6C5327931280FB70735 /* Config.swift */,
+				84943ACE8B478DBD4D697E72 /* Info.plist */,
+				74A648BDCC721807FAE97876 /* iPodifyApp.swift */,
+				F8407B07D1E2F17E4BA7E0A8 /* iPod */,
+				03BD249F06D7830D761A6C67 /* Library */,
+				5D886FEE420666609EF068D3 /* Player */,
+				6C2B4164465B1FB6038B200A /* Spotify */,
+			);
+			path = iPodify;
+			sourceTree = "<group>";
+		};
+		03BD249F06D7830D761A6C67 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				2EF19E2F059C23AE19552DBA /* Library.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		07DEF47B79E71D8DFD1B12DC = {
+			isa = PBXGroup;
+			children = (
+				038C7C23C237F67972ED7C0D /* iPodify */,
+				2F76211EF3DC23FE67A3C561 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2F76211EF3DC23FE67A3C561 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0FA747752AA2A2AD2FE2A38A /* iPodify.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5D886FEE420666609EF068D3 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				EE791E5A908ADE915685BDC9 /* Player.swift */,
+				0C9F35A4863E5B1E90DC2D87 /* SystemVolume.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		6C2B4164465B1FB6038B200A /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+				4C0DEAAA91F0C43315FC82C7 /* SpotifyAPI.swift */,
+				530C17DBA8B297B813D777A3 /* SpotifyAuth.swift */,
+			);
+			path = Spotify;
+			sourceTree = "<group>";
+		};
+		F8407B07D1E2F17E4BA7E0A8 /* iPod */ = {
+			isa = PBXGroup;
+			children = (
+				19360351F511D21DE46CEF26 /* ClickWheel.swift */,
+				67435BDED4955424014073FC /* IPod.swift */,
+				49F541BCF00F293C6B4269F6 /* IPodView.swift */,
+				A4D7F027733DE47D1F81E228 /* NowPlayingView.swift */,
+				7E06C31C8EBCEC8694E00EB9 /* ScreenView.swift */,
+			);
+			path = iPod;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E2711C9FD017975927C9B6E5 /* iPodify */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 92C20308A5361502DC4FAC70 /* Build configuration list for PBXNativeTarget "iPodify" */;
+			buildPhases = (
+				F02BF9E6240CBE9A01265FF4 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iPodify;
+			packageProductDependencies = (
+			);
+			productName = iPodify;
+			productReference = 0FA747752AA2A2AD2FE2A38A /* iPodify.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9F0FCBBF91AF23624E6D06D4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2710;
+				TargetAttributes = {
+					E2711C9FD017975927C9B6E5 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F65EF80F0D5FF7FE21D7BBD2 /* Build configuration list for PBXProject "iPodify" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 07DEF47B79E71D8DFD1B12DC;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2F76211EF3DC23FE67A3C561 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E2711C9FD017975927C9B6E5 /* iPodify */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F02BF9E6240CBE9A01265FF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB162E2BA74CAC9A1E978ABE /* ClickWheel.swift in Sources */,
+				AB25A687BAC109EA4088E6DE /* Config.swift in Sources */,
+				361B7F3E1F353FECC436BC50 /* IPod.swift in Sources */,
+				BA1E3B003C0DE86562AB18EE /* IPodView.swift in Sources */,
+				5CE2A0C5FBB37158231329AC /* Library.swift in Sources */,
+				4AAB053AD05DA8B5EF111E08 /* NowPlayingView.swift in Sources */,
+				514DA371398DCEA2E4B05884 /* Player.swift in Sources */,
+				B2FA51D3F58F5D8777C92BD4 /* ScreenView.swift in Sources */,
+				BE523485BCBB605AF1DBA2FB /* SpotifyAPI.swift in Sources */,
+				F427141654825F03E949FF25 /* SpotifyAuth.swift in Sources */,
+				1086F762762D124440085119 /* SystemVolume.swift in Sources */,
+				764B2260F2C18F177E745FBB /* iPodifyApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		4A3B86A64DBF6C7809908E44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iPodify/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iPod;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sofiatraba.ipodify;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		5EC98E89ACE1F82E2CE8AED7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 767229WVUT;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		71EBB075403E2C45FE611B5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iPodify/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = iPod;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sofiatraba.ipodify;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D6F3B0BC1688DC40F4F779EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 767229WVUT;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		92C20308A5361502DC4FAC70 /* Build configuration list for PBXNativeTarget "iPodify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A3B86A64DBF6C7809908E44 /* Debug */,
+				71EBB075403E2C45FE611B5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F65EF80F0D5FF7FE21D7BBD2 /* Build configuration list for PBXProject "iPodify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6F3B0BC1688DC40F4F779EB /* Debug */,
+				5EC98E89ACE1F82E2CE8AED7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9F0FCBBF91AF23624E6D06D4 /* Project object */;
+}

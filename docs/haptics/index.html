@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Click Wheel Haptics Test</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  /* Layout: one centred column — a tiny LCD readout, the wheel, three test controls. */
+  :root {
+    --bg: #e9eaec;
+    --body-top: #f7f7f8;
+    --body-bottom: #dcdde0;
+    --fg: #1d1f23;
+    --muted: #6b6f78;
+    --lcd: #ffffff;
+    --lcd-edge: #8a8d94;
+    --wheel: #f3f3f4;
+    --wheel-edge: #cfd0d4;
+    --wheel-label: #a9abb1;
+    --accent: #2a73d8;
+    --good: #2f8f4e;
+    --bad: #b8433a;
+    --font-ui: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #131416; --body-top: #26282c; --body-bottom: #121315; --fg: #eceef1; --muted: #9a9ea7;
+      --lcd: #f4f5f7; --lcd-edge: #44474d; --wheel: #232528; --wheel-edge: #0b0b0c; --wheel-label: #c9cbd0;
+      --accent: #5b9bef; --good: #5cc07f; --bad: #e07a70; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #131416; --body-top: #26282c; --body-bottom: #121315; --fg: #eceef1; --muted: #9a9ea7;
+    --lcd: #f4f5f7; --lcd-edge: #44474d; --wheel: #232528; --wheel-edge: #0b0b0c; --wheel-label: #c9cbd0;
+    --accent: #5b9bef; --good: #5cc07f; --bad: #e07a70; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: linear-gradient(var(--body-top), var(--body-bottom));
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-ui);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 20px;
+    -webkit-user-select: none; user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  main { max-width: 420px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; align-items: stretch; }
+  h1 { font-size: 20px; margin: 0; text-wrap: balance; }
+  .intro { margin: 4px 0 0; color: var(--muted); line-height: 1.45; font-size: 14px; }
+  .lcd {
+    background: var(--lcd); color: #1d1f23; border: 1.5px solid var(--lcd-edge); border-radius: 6px;
+    overflow: hidden;
+  }
+  .lcd-bar {
+    display: flex; justify-content: space-between; align-items: center; padding: 4px 8px;
+    font-size: 12px; font-weight: 700;
+    background: linear-gradient(#fdfdfd, #cdd0d4); border-bottom: 0.5px solid #8c8f95;
+  }
+  .lcd-body { padding: 10px 12px 12px; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; font-size: 14px; }
+  .lcd-body .k { color: #555a62; }
+  .lcd-body .v { font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+  .ok { color: #2f8f4e; } .no { color: #b8433a; }
+  .wheel-wrap { display: flex; justify-content: center; }
+  .wheel {
+    position: relative; width: min(78vw, 300px); aspect-ratio: 1; max-width: 100%;
+    border-radius: 50%; background: var(--wheel); border: 1px solid var(--wheel-edge);
+    touch-action: none; cursor: grab;
+  }
+  .wheel span { position: absolute; color: var(--wheel-label); font-weight: 700; font-size: 13px; pointer-events: none; }
+  .wheel .menu { top: 9%; left: 50%; transform: translateX(-50%); letter-spacing: 0.04em; }
+  .wheel .prev { left: 8%; top: 50%; transform: translateY(-50%); }
+  .wheel .next { right: 8%; top: 50%; transform: translateY(-50%); }
+  .wheel .play { bottom: 9%; left: 50%; transform: translateX(-50%); }
+  .center {
+    position: absolute; left: 50%; top: 50%; width: 38%; aspect-ratio: 1; transform: translate(-50%, -50%);
+    border-radius: 50%; background: var(--wheel); border: 1px solid var(--wheel-edge);
+  }
+  .center.down { filter: brightness(0.93); }
+  .controls { display: flex; flex-direction: column; gap: 10px; }
+  button {
+    font: inherit; font-size: 15px; font-weight: 600; padding: 12px 14px; border-radius: 10px;
+    border: 1px solid var(--wheel-edge); background: var(--wheel); color: var(--fg); cursor: pointer;
+  }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .row button { flex: 1 1 140px; }
+  button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+  .note { color: var(--muted); font-size: 13px; line-height: 1.45; margin: 0; }
+  .hidden-switch { position: fixed; left: -9999px; top: 0; opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<main>
+  <header>
+    <h1>Click wheel haptics test</h1>
+    <p class="intro">Open this in Safari on your iPhone, not inside the Claude app. Turn the wheel with your thumb and feel for a tick on every step.</p>
+  </header>
+
+  <section class="lcd" aria-live="polite">
+    <div class="lcd-bar"><span>▶</span><span>Haptics Test</span><span>▮▮▮</span></div>
+    <div class="lcd-body">
+      <span class="k">Haptic switch support</span><span class="v" id="support">checking…</span>
+      <span class="k">Steps turned</span><span class="v" id="steps">0</span>
+      <span class="k">Center presses</span><span class="v" id="presses">0</span>
+      <span class="k">Steps per turn</span><span class="v" id="spt">20</span>
+    </div>
+  </section>
+
+  <div class="wheel-wrap">
+    <div class="wheel" id="wheel" role="slider" aria-label="Click wheel" aria-valuenow="0" tabindex="0">
+      <span class="menu">MENU</span><span class="prev">⏮</span><span class="next">⏭</span><span class="play">⏯</span>
+      <div class="center" id="center"></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="single" type="button">Tap for one tick</button>
+    <div class="row">
+      <button id="sound" type="button" aria-pressed="false">Click sound: off</button>
+      <button id="density" type="button">Steps per turn: 20</button>
+    </div>
+    <p class="note">What to check: does "Tap for one tick" buzz? Does turning slowly tick every step? Does a fast spin still tick, or go quiet? Does it feel like a click wheel?</p>
+  </div>
+
+  <label class="hidden-switch" id="hapticLabel" aria-hidden="true"><input type="checkbox" switch id="hapticInput" tabindex="-1"></label>
+</main>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const label = $('hapticLabel'), input = $('hapticInput');
+
+  // Safari 18+ gives a haptic tap when its native switch toggles. Clicking a hidden one is the only
+  // way a web page on iPhone can make the Taptic Engine tick (navigator.vibrate is not supported there).
+  const supportsSwitch = 'switch' in input;
+  $('support').textContent = supportsSwitch ? 'yes' : (navigator.vibrate ? 'vibrate only' : 'no');
+  $('support').className = 'v ' + (supportsSwitch || navigator.vibrate ? 'ok' : 'no');
+
+  let audio = null, soundOn = false;
+  function clickSound() {
+    if (!soundOn) return;
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      const t = audio.currentTime, osc = audio.createOscillator(), gain = audio.createGain();
+      osc.type = 'square'; osc.frequency.value = 2400;
+      gain.gain.setValueAtTime(0.08, t); gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.012);
+      osc.connect(gain).connect(audio.destination); osc.start(t); osc.stop(t + 0.015);
+    } catch (e) {}
+  }
+  function tick() {
+    if (supportsSwitch) label.click();
+    else if (navigator.vibrate) navigator.vibrate(8);
+    clickSound();
+  }
+
+  let steps = 0, presses = 0, perTurn = 20;
+  const wheel = $('wheel'), center = $('center');
+  let last = null, acc = 0, inCenter = false;
+
+  function angleOf(e) {
+    const r = wheel.getBoundingClientRect();
+    return Math.atan2(e.clientY - (r.top + r.height / 2), e.clientX - (r.left + r.width / 2));
+  }
+  function distOf(e) {
+    const r = wheel.getBoundingClientRect();
+    return Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2)) / (r.width / 2);
+  }
+  wheel.addEventListener('pointerdown', e => {
+    wheel.setPointerCapture(e.pointerId);
+    inCenter = distOf(e) < 0.38;
+    if (inCenter) { center.classList.add('down'); return; }
+    last = angleOf(e); acc = 0;
+  });
+  wheel.addEventListener('pointermove', e => {
+    if (inCenter || last === null) return;
+    const a = angleOf(e); let d = a - last;
+    if (d > Math.PI) d -= 2 * Math.PI; if (d < -Math.PI) d += 2 * Math.PI;
+    last = a; acc += d;
+    const step = 2 * Math.PI / perTurn;
+    while (Math.abs(acc) >= step) {
+      acc -= Math.sign(acc) * step;
+      steps += 1; $('steps').textContent = steps; wheel.setAttribute('aria-valuenow', steps);
+      tick();
+    }
+  });
+  function end() {
+    if (inCenter) { presses += 1; $('presses').textContent = presses; tick(); }
+    center.classList.remove('down'); inCenter = false; last = null;
+  }
+  wheel.addEventListener('pointerup', end);
+  wheel.addEventListener('pointercancel', () => { center.classList.remove('down'); inCenter = false; last = null; });
+  wheel.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { steps += 1; $('steps').textContent = steps; tick(); e.preventDefault(); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { steps += 1; $('steps').textContent = steps; tick(); e.preventDefault(); }
+  });
+
+  $('single').addEventListener('click', tick);
+  $('sound').addEventListener('click', e => {
+    soundOn = !soundOn;
+    e.currentTarget.setAttribute('aria-pressed', soundOn);
+    e.currentTarget.textContent = 'Click sound: ' + (soundOn ? 'on' : 'off');
+    clickSound();
+  });
+  const densities = [12, 20, 30];
+  $('density').addEventListener('click', e => {
+    perTurn = densities[(densities.indexOf(perTurn) + 1) % densities.length];
+    e.currentTarget.textContent = 'Steps per turn: ' + perTurn;
+    $('spt').textContent = perTurn;
+  });
+</script>
+</body>
+</html>
