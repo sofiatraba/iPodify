@@ -162,8 +162,9 @@ async function api(method, pathOrURL, { query, json } = {}, attempt = 0) {
   const response = await fetch(url, { method, headers, body: json ? JSON.stringify(json) : undefined });
   if (response.ok) {
     if (response.status === 204) return null;
+    // Player commands can answer 200 with a bare id instead of JSON; that's still a success.
     const text = await response.text();
-    return text ? JSON.parse(text) : null;
+    try { return text ? JSON.parse(text) : null; } catch { return null; }
   }
   if (response.status === 401 && attempt === 0) return api(method, pathOrURL, { query, json }, 1);
   if (response.status === 429 && attempt === 0) {
