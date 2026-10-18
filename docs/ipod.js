@@ -21,6 +21,8 @@ const SCOPES = [
 ];
 /** Playlists whose names start with this word go on the iPod. Everything else is ignored. */
 const PLAYLIST_PREFIX = 'iPod';
+/** Bump with the ?v= in index.html on every change, so Home Screen copies pick up the new files. */
+const VERSION = 3;
 const VISIBLE_ROWS = 7;
 const STEPS_PER_TURN = 20;
 
@@ -577,6 +579,7 @@ const ipod = {
           ['Artists', library.artists.length],
           ['Synced', library.snapshot.syncedAt ? timeAgo(library.snapshot.syncedAt) : 'Never'],
           ['Playing on', player.deviceName || '—'],
+          ['Version', VERSION],
         ].map(([title, detail]) => ({ title, detail: String(detail), action: {} }));
     }
     return [];
