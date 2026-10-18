@@ -2,6 +2,16 @@
 
 An iPod classic for your iPhone. It only holds the music you put on it: Spotify playlists whose names start with the word `iPod`.
 
+## Web version (no Xcode needed)
+
+https://sofiatraba.github.io/iPodify/ is the same iPod as a web app, served from `docs/` by GitHub Pages.
+
+1. In the Spotify dashboard, open the app's **Settings › Redirect URIs**, add `https://sofiatraba.github.io/iPodify/` and save.
+2. On the iPhone, open the link in **Safari**, tap **Share › Add to Home Screen**.
+3. Open the iPod from the Home Screen icon and sign in there. The Home Screen app keeps its own sign-in, separate from Safari.
+
+Differences from the native app: the wheel clicks with sound only, since iOS doesn't let web pages vibrate. On Now Playing the wheel scrubs; use the side buttons for volume, because Spotify on an iPhone doesn't accept volume changes from other apps.
+
 ## Curating your iPod
 
 - In Spotify, rename a playlist to start with `iPod`, for example `iPod Sunday Morning`. On the iPod it shows up as just `Sunday Morning`. Capitals don't matter, and `iPod: Sunday Morning` or `iPod - Sunday Morning` work too.

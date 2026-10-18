@@ -2,20 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <title>iPod</title>
-<style>
-  :root { --bg: #f2f2f3; --fg: #1d1f23; --accent: #2a73d8; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #131416; --fg: #eceef1; --accent: #5b9bef; color-scheme: dark; } }
-  body { margin: 0; background: var(--bg); color: var(--fg); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; padding: 40px max(16px, env(safe-area-inset-left)); }
-  main { max-width: 420px; margin: 0 auto; }
-  a { color: var(--accent); }
-</style>
+<meta name="description" content="An iPod classic for your iPhone, built from your Spotify playlists.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="iPod">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#e9e9ea">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="ipod.css">
 </head>
-<body>
-<main>
-  <h1>iPod</h1>
-  <p>The web version is coming. For now: <a href="haptics/">the click wheel haptics test</a>.</p>
+<body class="silver">
+
+<main class="ipod" id="ipod">
+  <section class="screen" id="screen" aria-live="polite">
+    <div class="titlebar">
+      <svg class="state" id="state" viewBox="0 0 10 10" aria-hidden="true"></svg>
+      <span class="title" id="title">iPod</span>
+      <span class="battery" aria-hidden="true"><i></i></span>
+    </div>
+    <div class="body" id="body"></div>
+  </section>
+
+  <div class="wheel" id="wheel" role="application" aria-label="Click wheel. Arrow keys scroll, Enter selects, Escape goes back, Space plays or pauses." tabindex="0">
+    <span class="label menu">MENU</span>
+    <svg class="label prev" viewBox="0 0 24 16" aria-hidden="true"><path d="M2 2h2.5v12H2zM13 2v12L4.5 8zM22 2v12L13.5 8z"/></svg>
+    <svg class="label next" viewBox="0 0 24 16" aria-hidden="true"><path d="M2 2v12l8.5-6zM11 2v12l8.5-6zM19.5 2H22v12h-2.5z"/></svg>
+    <svg class="label play" viewBox="0 0 24 16" aria-hidden="true"><path d="M2 2v12l8.5-6zM14 2h3v12h-3zM19.5 2h3v12h-3z"/></svg>
+    <div class="center" id="center"></div>
+  </div>
+
+  <label class="haptic" aria-hidden="true"><input type="checkbox" switch id="haptic" tabindex="-1"></label>
 </main>
+
+<script src="ipod.js"></script>
 </body>
 </html>

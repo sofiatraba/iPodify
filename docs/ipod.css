@@ -1,0 +1,135 @@
+/* The whole phone becomes the iPod: screen on top, click wheel below. */
+:root {
+  --case-top: #fbfbfb; --case-bottom: #e6e6e6;
+  --wheel-top: #f7f7f7; --wheel-bottom: #ebebeb; --wheel-stroke: #d1d1d1; --wheel-label: #adadad;
+  --center-top: #ededed; --center-bottom: #fcfcfc;
+  --lcd: #fff; --ink: #000; --dim: #666; --faint: #595959;
+  --select-top: #6bb0f5; --select-bottom: #2170d9;
+  --screen-w: 330px; --screen-h: 257px; --wheel-size: 280px;
+  color-scheme: light;
+}
+body.black {
+  --case-top: #292929; --case-bottom: #0d0d0d;
+  --wheel-top: #333; --wheel-bottom: #212121; --wheel-stroke: #0d0d0d; --wheel-label: #d1d1d1;
+  --center-top: #121212; --center-bottom: #242424;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; overflow: hidden; overscroll-behavior: none; }
+body {
+  position: fixed; inset: 0;
+  background: linear-gradient(var(--case-top), var(--case-bottom));
+  font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-user-select: none; user-select: none;
+  -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent;
+}
+
+.ipod {
+  height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: space-evenly;
+  padding: max(22px, env(safe-area-inset-top)) 22px max(16px, env(safe-area-inset-bottom));
+}
+
+/* The little LCD */
+.screen {
+  width: var(--screen-w); height: var(--screen-h); flex: none;
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--lcd); color: var(--ink);
+  border: 1.5px solid rgba(0, 0, 0, .55); border-radius: 6px;
+}
+.titlebar {
+  position: relative; height: 22px; flex: none; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 7px; background: linear-gradient(#fcfcfc, #ccc); border-bottom: .5px solid #8c8c8c;
+}
+.titlebar .title {
+  position: absolute; left: 44px; right: 44px; text-align: center;
+  font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.titlebar .state { width: 9px; height: 9px; fill: #4073d9; }
+.battery { position: relative; width: 22px; height: 10px; border: .8px solid #595959; border-radius: 1.5px; margin-right: 2px; }
+.battery::after { content: ""; position: absolute; right: -3px; top: 2.5px; width: 1.5px; height: 4px; background: #595959; }
+.battery i { position: absolute; inset: 1.5px; border-radius: 1px; background: linear-gradient(#8cd966, #409926); }
+
+.body { position: relative; flex: 1; min-height: 0; }
+
+.menu-list { position: absolute; inset: 0; display: flex; }
+.rows { flex: 1; min-width: 0; display: grid; grid-template-rows: repeat(7, 1fr); }
+.row {
+  display: flex; align-items: center; gap: 6px; padding: 0 8px; min-width: 0;
+  font-size: 15px; font-weight: 600;
+}
+.row .t { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .d { color: var(--dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55%; }
+.row .c { width: 7px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.4; }
+.row.sel { color: #fff; background: linear-gradient(var(--select-top), var(--select-bottom)); }
+.row.sel .d { color: #fff; }
+
+.scrollbar { position: relative; width: 8px; flex: none; background: #ebebeb; border-left: .5px solid #999; }
+.scrollbar i { position: absolute; left: 1.5px; width: 5px; border-radius: 1.5px; background: linear-gradient(90deg, #8c8c8c, #595959); }
+
+.message {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  padding: 16px; text-align: center; font-size: 13px; font-weight: 600; color: #4d4d4d; white-space: pre-line;
+}
+.message b { font-size: 17px; color: var(--ink); }
+.spinner {
+  width: 28px; height: 28px; border-radius: 50%; border: 3px solid #ddd; border-top-color: #666;
+  animation: spin .9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.alert {
+  position: absolute; left: 16px; right: 16px; top: 50%; transform: translateY(-50%);
+  padding: 12px; text-align: center; font-size: 13px; font-weight: 600; color: #000;
+  background: #f5f5f5; border: 1px solid #808080; border-radius: 6px; box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+}
+
+.footnote { position: absolute; left: 0; right: 0; bottom: 8px; padding: 0 12px; text-align: center; font-size: 11px; font-weight: 600; color: var(--faint); }
+
+/* Now Playing */
+.np { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 6px 10px 10px; }
+.np .pos { font-size: 11px; font-weight: 600; height: 14px; }
+.np .main { display: flex; gap: 12px; margin-top: 6px; min-height: 0; }
+.np .art { position: relative; flex: none; width: var(--art); }
+.np .art img, .np .art .ph { display: block; width: var(--art); height: var(--art); object-fit: cover; background: #e6e6e6; }
+.np .art .ph { display: flex; align-items: center; justify-content: center; font-size: 34px; color: #999; }
+.np .art .refl {
+  height: calc(var(--art) * .22); margin-top: 1px; overflow: hidden; opacity: .35;
+  -webkit-mask-image: linear-gradient(#000, transparent); mask-image: linear-gradient(#000, transparent);
+}
+.np .art .refl img { transform: scaleY(-1); }
+.np .info { min-width: 0; padding-top: 6px; display: flex; flex-direction: column; gap: 4px; }
+.np .song { font-size: 14px; font-weight: 700; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.np .artist, .np .album { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.np .album { color: #595959; }
+.np .bottom { margin-top: auto; }
+.np .barrow { display: flex; align-items: center; gap: 6px; }
+.np .barrow svg { width: 12px; height: 10px; flex: none; }
+.bar { position: relative; flex: 1; height: 9px; background: linear-gradient(#d9d9d9, #f7f7f7); outline: .5px solid #808080; }
+.bar .fill { position: absolute; left: 0; top: 0; bottom: 0; background: linear-gradient(#73b8fa, #2673db); }
+.bar .knob { position: absolute; top: -1.5px; width: 10px; height: 12px; margin-left: -5px; background: #000; clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.np .times { display: flex; justify-content: space-between; margin-top: 3px; font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* The click wheel */
+.wheel {
+  position: relative; width: var(--wheel-size); height: var(--wheel-size); flex: none; border-radius: 50%;
+  background: linear-gradient(var(--wheel-top), var(--wheel-bottom));
+  border: 1px solid var(--wheel-stroke); box-shadow: 0 1px 2px rgba(0, 0, 0, .08);
+  touch-action: none; outline: none;
+}
+body.black .wheel { box-shadow: 0 1px 2px rgba(0, 0, 0, .4); }
+.wheel:focus-visible { box-shadow: 0 0 0 3px var(--select-bottom); }
+.wheel .label { position: absolute; color: var(--wheel-label); fill: var(--wheel-label); pointer-events: none; }
+.wheel .menu { top: 10%; left: 0; right: 0; text-align: center; font-weight: 700; font-size: calc(var(--wheel-size) * .058); letter-spacing: .02em; }
+.wheel svg.label { width: calc(var(--wheel-size) * .075); height: calc(var(--wheel-size) * .05); }
+.wheel .prev { left: 9%; top: 50%; transform: translateY(-50%); }
+.wheel .next { right: 9%; top: 50%; transform: translateY(-50%); }
+.wheel .play { bottom: 10%; left: 50%; transform: translateX(-50%); }
+.wheel .center {
+  position: absolute; left: 31%; top: 31%; width: 38%; height: 38%; border-radius: 50%;
+  background: linear-gradient(var(--center-top), var(--center-bottom)); border: 1px solid var(--wheel-stroke);
+  pointer-events: none;
+}
+.wheel .center.down { filter: brightness(.94); }
+
+/* Safari 18+ taps the Taptic Engine when a native switch flips; this one is never seen. */
+.haptic { position: fixed; left: -9999px; top: 0; opacity: 0; pointer-events: none; }
