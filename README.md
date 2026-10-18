@@ -37,11 +37,10 @@ Music plays through the Spotify app. The iPod is its remote, with a click wheel.
 1. Go to https://developer.spotify.com/dashboard and log in. You need Premium.
 2. Click **Create app**:
    - Name: `iPod`. Description: anything.
-   - Redirect URI: `ipodify://callback` (click **Add**)
-   - APIs used: tick **Web API** and **iOS**
-   - iOS bundle ID (if asked): `com.sofiatraba.ipodify`
+   - Redirect URIs: `ipodify://callback` for the native app, and your web address (for example `https://sofiatraba.github.io/iPodify/`) for the web version. Click **Add** after each.
+   - APIs used: tick **Web API** only.
 3. Save, open **Settings**, and copy the **Client ID**.
-4. Paste it into `iPodify/Config.swift` in place of `PASTE_YOUR_CLIENT_ID_HERE`.
+4. Put it in `iPodify/Config.swift` (`spotifyClientID`) and `docs/ipod.js` (`CLIENT_ID`). If you host the web version somewhere else, change `SITE_URI` in `docs/ipod.js` too.
 
 Development-mode Spotify apps work for the owner plus up to 5 users you add under **User Management**.
 
